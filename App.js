@@ -3,8 +3,8 @@ import { StyleSheet, Text, View, Alert, Button, TextInput, Image } from "react-n
 import axios from 'axios';
 
 const peticion = () => {
-  const [temp,setTemp] = useState(-5000000000);
   const [location,setLocation] = useState('');
+  const [temp,setTemp] = useState(-5000000000);
   const params = {
     access_key: '57b1e99f85fe08f87b577c1922f8d68e',
     query: location
@@ -37,14 +37,14 @@ return(
       <View style={styles.content}>
       {
         temp === -5000000000 ?
-        <Text style={styles.prev}> Escribe una ciudad o país para conocer su temperatura</Text> 
-      :  temp <0 ?
+      <Text style={styles.prev}> Escribe una ciudad o país para conocer su temperatura</Text> 
+      :  temp <=0 ?
       <><Text style={styles.textImg}>{temp}℃</Text><Image style={styles.imagen} source={require('./img/muyFrio.png')} /></> 
-      : temp>0 && temp<10 ? 
+      : temp>0 && temp<=10 ? 
       <><Text style={styles.textImg}>{temp}℃</Text><Image style={styles.imagen} source={require('./img/frio.png')}/></>
-      : temp >10 && temp<20 ?
+      : temp >10 && temp<=20 ?
       <><Text style={styles.textImg}>{temp}℃</Text><Image style={styles.imagen} source={require('./img/templado.png')}/></>
-      : temp >20 && temp<25 ?
+      : temp >20 && temp<=25 ?
       <><Text style={styles.textImg}>{temp}℃</Text><Image style={styles.imagen} source={require('./img/calido.png')}/></>
       : //De ley es mayor a 25
       <><Text style={styles.textImg}>{temp}℃</Text><Image style={styles.imagen} source={require('./img/muyCalido.png')}/></>
